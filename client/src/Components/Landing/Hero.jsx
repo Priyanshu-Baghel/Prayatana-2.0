@@ -132,7 +132,7 @@ const Hero = () => {
                   color="black"
                   attach="material"
                   distort={0.5}
-                  speed={0}
+                  speed={2}
                 />
               </Sphere>
             </Suspense>

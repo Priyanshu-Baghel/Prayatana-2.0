@@ -1,6 +1,6 @@
 import { UserRound, MapPin, Phone, Mail, Globe } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../store/auth';
 import { toast } from 'react-toastify';
 import SummaryApi from '../../Utils/Utils';
@@ -60,11 +60,11 @@ const ProfileCard = () => {
               </div>
             </div>
             <div className="flex justify-center sm:justify-between mt-32 md:mt-0 md:justify-evenly w-full flex-wrap items-center gap-3">
-              <NavLink to='/download'>
+              <Link to='/TrackerPage'>
                 <button className="text-white text-sm py-2 px-4 md:w-[10rem] sm:w-1/4 uppercase rounded bg-black hover:bg-black/80 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                  Dashboard
+                  Tracker
                 </button>
-              </NavLink>
+              </Link>
               <NavLink to='/complete_profile'>
                 <button className="text-black py-2 px-4 md:w-[10rem] flex items-center w-full uppercase rounded border border-black hover:bg-border/80 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                   <span className="mx-2 text-sm">Update Profile</span>
@@ -78,7 +78,7 @@ const ProfileCard = () => {
             <h1 className="text-4xl font-bold text-gray-700">{user.username}</h1>
             <div className="mt-12 flex flex-col justify-center">
             <p className="text-gray-700 text-center font-sm lg:px-16">
-              Our area falls under the jurisdiction of <b className='font-medium'>[Municipal Corporation {profile?.city}]</b>, 
+              Your area falls under the jurisdiction of <b className='font-medium'>[Municipal Corporation {profile?.city}]</b>, 
               ensuring civic amenities, infrastructure development, and public services.
               The corporation oversees sanitation, water supply, road maintenance, waste management, 
               and community welfare programs to enhance the quality of life for residents.

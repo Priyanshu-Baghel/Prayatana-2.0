@@ -1,11 +1,23 @@
 import { useState } from "react";
 
+const statesWithCities = {
+  "Madhya Pardesh" : ["Indore", "Bhopal", "Ujjain"],
+  "Maharashtra": ["Mumbai", "Pune", "Nagpur"],
+  "Karnataka": ["Bangalore", "Mysore", "Mangalore"],
+  "Delhi": ["New Delhi"],
+  "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai"],
+  "Uttar Pradesh": ["Lucknow", "Kanpur", "Varanasi"]
+};
+
+
 export default function ComplaintPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     complaintType: "",
     description: "",
+    state: "",
+    city: "",
     images: [],
     videos: [],
   });
@@ -17,6 +29,11 @@ export default function ComplaintPage() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleStateChange = (e) => {
+    const selectedState = e.target.value;
+    setFormData({ ...formData, state: selectedState, city: "" });
   };
 
   const handleFileChange = (e, type) => {
@@ -52,6 +69,9 @@ export default function ComplaintPage() {
   formDataToSend.append("email", formData.email);
   formDataToSend.append("complaintType", formData.complaintType);
   formDataToSend.append("description", formData.description);
+  formDataToSend.append("state", formData.state);
+  formDataToSend.append("city", formData.city);
+
 
   // Append images
   formData.images.forEach((image) => {
@@ -79,6 +99,8 @@ export default function ComplaintPage() {
         email: "",
         complaintType: "",
         description: "",
+        state: "",
+        city: "",
         images: [],
         videos: [],
       });
@@ -140,7 +162,7 @@ export default function ComplaintPage() {
               <option value="">Select Type</option>
               <option value="water">Water Supply</option>
               <option value="electricity">Electricity</option>
-              <option value="road">Road Maintenance</option>
+              <option value="road Maintenance">Road Maintenance</option>
               <option value="sanitation">Sanitation</option>
             </select>
             {errors.complaintType && <p className="text-red-500 text-sm mt-2">{errors.complaintType}</p>}
@@ -158,6 +180,38 @@ export default function ComplaintPage() {
             />
             {errors.description && <p className="text-red-500 text-sm mt-2">{errors.description}</p>}
           </div>
+
+          <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">State</label>
+        <select
+          name="state"
+          value={formData.state}
+          onChange={handleStateChange}
+          className="w-full p-3 border border-gray-300 rounded-lg"
+        >
+          <option value="">Select State</option>
+          {Object.keys(statesWithCities).map((state) => (
+            <option key={state} value={state}>{state}</option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">City</label>
+        <select
+          name="city"
+          value={formData.city}
+          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+          disabled={!formData.state}
+          className="w-full p-3 border border-gray-300 rounded-lg"
+        >
+          <option value="">Select City</option>
+          {formData.state && statesWithCities[formData.state].map((city) => (
+            <option key={city} value={city}>{city}</option>
+          ))}
+        </select>
+      </div>
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Upload Images (Optional)</label>
             <input

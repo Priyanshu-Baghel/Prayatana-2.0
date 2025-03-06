@@ -25,6 +25,10 @@ const Navbar = () => {
             href: '/complaint',
         },
         {
+            name: 'ChatBot',
+            href: '/chatbot',
+        },
+        {
           name: 'About',
           href: '/about',
         },

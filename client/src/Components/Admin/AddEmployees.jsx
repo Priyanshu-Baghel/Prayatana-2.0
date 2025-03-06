@@ -122,11 +122,23 @@ const AddEmployee = () => {
             className="w-full p-2 mt-1 border rounded-md"
             required
           >
+
+            {/* ['Electricity', 'Education', 'Healthcare', 'Waste Management',
+       'Sanitation', 'Street Lighting', 'Public Transport',
+       'Road Infrastructure', 'Water Supply', 'Traffic Management',
+       'Pollution'] */}
             <option value="">Select Department</option>
-            <option value="HR">HR</option>
-            <option value="IT">IT</option>
-            <option value="Finance">Finance</option>
-            <option value="Operations">Operations</option>
+            <option value="Electricity">Electricity</option>
+            <option value="Education">Education</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Waste Management">Waste Management</option>
+            <option value="Sanitation">Sanitation</option>
+            <option value="Street Lighting">Street Lighting</option>
+            <option value="Public Transport">Public Transport</option>
+            <option value="Road Infrastructure">Road Infrastructure</option>
+            <option value="Water Supply">Water Supply</option>
+            <option value="Traffic Management">Traffic Management</option>
+            <option value="Pollution">Pollution</option>            
           </select>
         </div>
 

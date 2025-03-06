@@ -25,6 +25,11 @@ import AddOrganization from './Components/Admin/AddOrganization';
 import GetEmployees from './Components/Admin/GetEmployees';
 import AddEmployee from './Components/Admin/AddEmployees';
 import GetAllOrganizations from './Components/Admin/GetAllOrhanization';
+import DashboardEmployee from './Pages/employee/DashboardEmployee';
+import ComplaintResponsePage from './Pages/Complaint/ComplaintResponsePage';
+import ComplaintTracker from './Pages/user/UserDashboard';
+import ReportAnalysis from './Components/ReportAnalysis/ReportAnalysis';
+import ChatBot from './Components/Commons/ChatBot';
 
 
 
@@ -42,6 +47,7 @@ const App = () => {
             <Route path='/contact' element={<Contact />}/>
             <Route path='*' element={<Error/> } />
             <Route path='/complaint' element={<ComplaintPage />} />
+            <Route path='/chatbot'element ={<ChatBot />} />
 
             {/* User routes */}
             <Route path='/signin' element={<SignIn />}/>
@@ -53,7 +59,7 @@ const App = () => {
             <Route path='/payment' element = {<ProtectedRoute Component = {Payment} />} />
             <Route path='/payment_success' element= {<ProtectedRoute Component = {Success} />} />
             <Route path='/payment_failed' element= {<ProtectedRoute Component = {Fail }/>} />
-
+            <Route path='/reportAnalysis' element = {<ReportAnalysis />} />
             
 
             {/*System Admin Routes */}
@@ -67,7 +73,10 @@ const App = () => {
             <Route path='/admin/getAllEmployees'element={<AdminAuth component = {GetEmployees}/>}/>
             <Route path="/admin/addEmployee" element={<AdminAuth component = {AddEmployee} />} />
             <Route path='/admin/getallorgainzation' element={ <AdminAuth component ={GetAllOrganizations} />} />
-          
+            <Route path='/employee/dashboard' element= {<DashboardEmployee />} />
+            <Route path='/ComplaintResponsePage/:id' element= {<ComplaintResponsePage />} />
+            <Route path='/TrackerPage' element = {<ComplaintTracker />} />
+
           </Routes>
         
       <Footer />

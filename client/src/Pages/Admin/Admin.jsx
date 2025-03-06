@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import React from 'react'
-import { Plus, Users, MonitorPlay, MessageCircleMore, BookCopy, Briefcase, UserCheck} from "lucide-react";
+import { Plus, Users,BarChart3, MonitorPlay, MessageCircleMore, BookCopy, Briefcase, UserCheck} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Admin = () => {
@@ -44,9 +44,11 @@ const Admin = () => {
                   <div className="border-t border-blue-gray-50 p-4">
                     <p className=" antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600 flex justify-between  items-center">
                       <strong className="text-gray-600"> Total Complaints</strong>
-                      <button className="px-2 font-medium py-1  bg-gray-200 text-gray-500 hover:bg-gray-300 text-sm rounded-md">
+                       <Link to="/admin/getAllComplaint">
+                      <button type = "button" className="px-2 font-medium py-1  bg-gray-200 text-gray-500 hover:bg-gray-300 text-sm rounded-md">
                         View
                       </button>
+                      </Link>
                     </p>
                   </div>
                 </div>
@@ -65,9 +67,11 @@ const Admin = () => {
                   <div className="border-t border-blue-gray-50 p-4">
                     <p className="antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600  flex justify-between  items-center">
                       <strong className="text-gray-600"> Total Organizations</strong>
-                      <button className="px-2 font-medium py-1 bg-gray-200 text-gray-500 hover:bg-gray-300 text-sm rounded-md">
+                      <Link to='/admin/getallorgainzation'>
+                      <button type='button' className="px-2 font-medium py-1 bg-gray-200 text-gray-500 hover:bg-gray-300 text-sm rounded-md">
                         View
                       </button>
+                      </Link>
                     </p>
                   </div>
                 </div>
@@ -189,6 +193,17 @@ const Admin = () => {
                     >
                       <BookCopy />
                       Get All Organizations
+                    </button>
+                  </Link>
+                </div>
+                 <div className="justify-center items-center mx-4">
+                  <Link to="/reportAnalysis">
+                    <button
+                      type="button"
+                      className="bg-clip-border items-center gap-2 px-7 py-2.5 rounded-xl overflow-hidden bg-gradient-to-tr from-cyan-600 to-cyan-400 text-white shadow-cyan-500/40 shadow-lg grid place-items-center"
+                    >
+                      <BarChart3 />
+                      Analysis & Reports
                     </button>
                   </Link>
                 </div>
