@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 // Submit a new complaint
 const submitComplaint = async (req, res) => {
   try {
-    const { name, email, complaintType, description } = req.body;
+    const { name, email, complaintType, description, city, state } = req.body;
 
     const images = req.files["images"] ? req.files["images"].map((file) => file.path) : [];
     const videos = req.files["videos"] ? req.files["videos"].map((file) => file.path) : [];
@@ -24,6 +24,8 @@ const submitComplaint = async (req, res) => {
       email,
       complaintType,
       description,
+      city,
+      state,
       images,
       videos,
     });
@@ -38,7 +40,7 @@ const submitComplaint = async (req, res) => {
       subject: "Complaint Submitted Successfully", // Subject line
       text: `Dear ${name},\n\nYour complaint regarding "${complaintType}" has been submitted successfully.\n\nDescription: ${description}\n\nThank you for reaching out to us.\n\nBest regards,\nYour Support Team`, // Plain text body
       html: `<p>Dear ${name},</p>
-             <p>Your complaint regarding <strong>${complaintType}</strong> has been submitted successfully.</p>
+             <p>Your complaint regarding <strong>${complaintType}</strong> has been submitted successfully and Complaint id <b>R54321</b1>.</p>
              <p><strong>Description:</strong> ${description}</p>
              <p>Thank you for reaching out to us.</p>
              <p>Best regards,<br>Your Support Team</p>`, // HTML body

@@ -1,6 +1,7 @@
 const express = require("express");
 const { submitComplaint, getComplaints } = require("../../controller/complaint/complaintController");
 const upload = require("../../middlewares/uploadmiddleware/uploadMiddleware");
+const Complaint = require("../../models/complaint/complaintModel");
 
 const router = express.Router();
 
@@ -14,33 +15,43 @@ router.post(
 // Fetch all complaints
 router.get("/", getComplaints);
 
-router.put('/assign/:complaintId', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    const { employeeId } = req.body;
-    const complaint = await Complaint.findByIdAndUpdate(
-      req.params.complaintId,
-      { assignedTo: employeeId, status: 'Assigned' },
-      { new: true }
-    );
+    console.log("Hii");
+    const complaint = await Complaint.findById(req.params.id);
+    console.log("hello");
+    
+    
+    if (!complaint) {
+      return res.status(404).json({ message: "Complaint not found" });
+    }
     res.json(complaint);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to assign complaint' });
+    res.status(500).json({ message: "Server error", error });
   }
 });
 
-// Update complaint response and status
-router.put('/respond/:complaintId', async (req, res) => {
+
+router.put("/complaints/:id/response", async (req, res) => {
   try {
     const { response, status } = req.body;
-    const complaint = await Complaint.findByIdAndUpdate(
-      req.params.complaintId,
+
+    const updatedComplaint = await Complaint.findByIdAndUpdate(
+      req.params.id,
       { response, status },
       { new: true }
     );
-    res.json(complaint);
+
+    if (!updatedComplaint) {
+      return res.status(404).json({ message: "Complaint not found" });
+    }
+
+    res.json(updatedComplaint);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to update complaint response' });
+    res.status(500).json({ message: "Server error", error });
   }
 });
 
 module.exports = router;
+
+
