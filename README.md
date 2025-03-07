@@ -19,25 +19,25 @@ Follow the steps below to set up and run the project.
 
 Frontend Setup
 
-cd client
-npm install
-npm run dev
+1. cd client
+2. npm install
+3. npm run dev
 
 Backend Setup
 
-cd server
-npm install
-npm run dev
+1. cd server
+2. npm install
+3. npm run dev
 
 Technologies Used
 
-Frontend: React.js, Tailwind CSS
+Frontend: React.js, Tailwind CSS, Vite
 
-Backend: Node.js, Express.js
+Backend: Node.js, Express.js, Flask 
 
 Database: MongoDB
 
-AI Model: Sentiment Analysis using NLP
+AI Model: Sentiment Analysis using NLP (llama 3.2) by Solo
 
 Contribution
 
