@@ -24,10 +24,10 @@ const Navbar = () => {
             name: 'Complaint',
             href: '/complaint',
         },
-        {
-            name: 'ChatBot',
-            href: '/chatbot',
-        },
+        // {
+        //     name: 'ChatBot',
+        //     href: '/chatbot',
+        // },
         {
           name: 'About',
           href: '/about',
@@ -35,7 +35,7 @@ const Navbar = () => {
         {
           name: 'Contact',
           href: '/contact',
-        },
+        }, 
       ]
 
       const [isMenuOpen, setIsMenuOpen] = React.useState(false)

@@ -11,7 +11,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    scrollToBottom();
+    // m run scrollToBottom();
   }, [messages]);
 
   const handleSubmit = async (e) => {

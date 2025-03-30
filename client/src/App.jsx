@@ -30,6 +30,7 @@ import ComplaintResponsePage from './Pages/Complaint/ComplaintResponsePage';
 import ComplaintTracker from './Pages/user/UserDashboard';
 import ReportAnalysis from './Components/ReportAnalysis/ReportAnalysis';
 import ChatBot from './Components/Commons/ChatBot';
+import AssignTask from './Components/Admin/AssignTask';
 
 
 
@@ -76,6 +77,7 @@ const App = () => {
             <Route path='/employee/dashboard' element= {<DashboardEmployee />} />
             <Route path='/ComplaintResponsePage/:id' element= {<ComplaintResponsePage />} />
             <Route path='/TrackerPage' element = {<ComplaintTracker />} />
+            <Route path='/assign/task' element = {<AssignTask />} />
 
           </Routes>
         

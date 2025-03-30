@@ -18,7 +18,7 @@ const DashboardEmployee = () => {
             .then(data => setComplaints(data))
             .catch(error => console.error('Error fetching complaints:', error));
     
-        fetch("http://localhost:8000/api/employees")
+        fetch("https://prayatana-2-0.vercel.app/api/employees")
             .then(response => response.json())
             .then(data => setEmployees(data))
             .catch(error => console.error('Error fetching employees:', error));
@@ -27,13 +27,16 @@ const DashboardEmployee = () => {
 
     const SentAckEmail = async (messageId) => {
         try {
-            const response = await fetch(`http://localhost:8000/api/admin/messages/acknowledge/${messageId}`, {
-                method: 'POST',
+            const response = await fetch(
+              `https://prayatana-2-0.vercel.app/api/admin/messages/acknowledge/${messageId}`,
+              {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${user.token}` // Assuming you use token-based authentication
-                }
-            });
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${user.token}`, // Assuming you use token-based authentication
+                },
+              }
+            );
 
             if (!response.ok) {
                 throw new Error('Failed to send acknowledgment');

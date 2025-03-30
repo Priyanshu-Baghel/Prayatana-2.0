@@ -8,10 +8,10 @@ const ComplaintResponsePage = () => {
     const [responseText, setResponseText] = useState("");
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/complaints/${id}`)
-            .then(response => response.json())
-            .then(data => setComplaint(data))
-            .catch(error => console.error("Error fetching complaint:", error));
+        fetch(`https://prayatana-2-0.vercel.app/api/complaints/${id}`)
+          .then((response) => response.json())
+          .then((data) => setComplaint(data))
+          .catch((error) => console.error("Error fetching complaint:", error));
     }, [id]);
 
     console.log(complaint);
@@ -19,13 +19,16 @@ const ComplaintResponsePage = () => {
 
     const handleSubmit = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/api/complaints/respond/${id}`, {
+            const response = await fetch(
+              `https://prayatana-2-0.vercel.app/api/complaints/respond/${id}`,
+              {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                  "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ response: responseText }),
-            });
+              }
+            );
 
             if (!response.ok) throw new Error("Failed to send response");
 

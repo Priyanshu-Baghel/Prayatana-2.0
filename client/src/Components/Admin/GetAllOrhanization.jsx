@@ -7,7 +7,9 @@ const GetAllOrganizations = () => {
   useEffect(() => {
     const fetchOrganizations = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/organizations");
+        const response = await fetch(
+          "https://prayatana-2-0.vercel.app/api/organizations"
+        );
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

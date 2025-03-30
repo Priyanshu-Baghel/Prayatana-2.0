@@ -8,7 +8,9 @@ const GetEmployees = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/employees");
+        const response = await fetch(
+          "https://prayatana-2-0.vercel.app/api/employees"
+        );
 
           if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);

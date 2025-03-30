@@ -84,10 +84,13 @@ export default function ComplaintPage() {
   });
 
   try {
-    const response = await fetch("http://localhost:8000/api/complaints/submit", {
-      method: "POST",
-      body: formDataToSend,
-    });
+    const response = await fetch(
+      "https://prayatana-2-0.vercel.app/api/complaints/submit",
+      {
+        method: "POST",
+        body: formDataToSend,
+      }
+    );
 
     const result = await response.json();
     console.log(result);
