@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
+    "start": "node server.js",
     "build": "webpack --config webpack.config.js"
   },
   "author": "Priyanshu Baghel",
@@ -23,5 +24,11 @@
     "nodemon": "^3.1.0",
     "stripe": "^15.3.0",
     "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
