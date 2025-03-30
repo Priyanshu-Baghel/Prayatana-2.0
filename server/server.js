@@ -19,10 +19,10 @@ const complaintRoutes = require("./router/complaint/complaintRouter");
 const organizationRoutes = require('./router/orgainzation/orgainzationRouter');
 const employeeRoutes = require('./router/employee/employeeRouter');
 
-// const BASE_URI = process.env.Base
+const BASE_URI = process.env.Base
 
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: BASE_URI || "*",
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials : true
 }

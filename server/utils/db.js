@@ -1,8 +1,7 @@
 require("dotenv").config(); // Load environment variables
 const mongoose = require("mongoose");
 
-const DB_URL = process.env.MONGODB_URL || "mongodb://localhost:27017/Sahayata-Setu/";
-
+const DB_URL = process.env.MONGODB_URL;
 if (!DB_URL) {
     console.error("MongoDB connection string is missing!");
     process.exit(1);
