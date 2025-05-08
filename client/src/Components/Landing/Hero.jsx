@@ -1,10 +1,11 @@
-import React, { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
-import SahayataLogo from '../../Assets/Logo/Sahayata.png';
-import Logo from '../../Assets/Logo/Logo.svg';
-import { Link, NavLink } from 'react-router-dom';
-import { useAuth } from '../../store/auth';
+import React, { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
+import SahayataLogo from "../../Assets/Logo/Sahayata.png";
+import Logo from "../../Assets/Logo/Logo.svg";
+import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../../store/auth";
+import Navbar from "../Commons/Navbar";
 
 const Hero = () => {
   const { isLoggedIn, user } = useAuth();
@@ -12,30 +13,33 @@ const Hero = () => {
 
   return (
     <div className="relative w-full bg-white">
-      <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 px-4 py-12 md:py-16 lg:px-8 lg:py-24">
+      <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 px-4 py-12 md:py- lg:px-8 lg:py-24">
         {/* Left Section */}
         <div className="flex flex-col justify-center lg:col-span-7 xl:col-span-6">
           <span>
             <img src={Logo} width="50" height="30" alt="Sahayata Logo" />
           </span>
 
-          <div className="mt-8 flex flex-wrap items-center gap-2 rounded-full bg-gray-100 p-2">
-            <div className="rounded-full bg-white px-3 py-1">
+          <Link to="/signin">
+          <div className="mt-8 flex max-w-max items-center space-x-2 rounded-full bg-gray-100 p-2">
+            <div className="rounded-full bg-white px-2 py-1">
               <p className="text-sm font-medium">Empowering Assistance</p>
             </div>
             <p className="text-sm font-medium">Join our mission &rarr;</p>
           </div>
+          </Link>
 
-          <h1 className="mt-6 text-3xl md:text-4xl lg:text-6xl font-bold text-black">
+          <h1 className="mt-4 text-3xl md:text-4xl lg:text-6xl font-bold text-black">
             Sahayata-Setu: <br />
             Bridging Assistance, Connecting Lives.
           </h1>
 
-          <p className="mt-6 text-base md:text-lg text-gray-700 max-w-prose">
-            A unified platform to streamline public service complaints and ensure effective routing for quick resolutions.
+          <p className="mt-4 text-base md:text-lg text-gray-700 max-w-prose">
+            A unified platform to streamline public service complaints and
+            ensure effective routing for quick resolutions.
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-4 flex flex-wrap gap-3">
             {isLoggedIn ? (
               <>
                 {user.role === "admin" && (
@@ -75,12 +79,12 @@ const Hero = () => {
               <OrbitControls enableZoom={false} />
               <ambientLight intensity={0.8} />
               <directionalLight position={[3, 2, 1]} />
-              <Sphere args={[1, 100, 200]} scale={2.1}>
+              <Sphere args={[1, 100, 200]} scale={2.6}>
                 <MeshDistortMaterial
                   color="black"
                   attach="material"
                   distort={0.5}
-                  speed={2}
+                  speed={1.8}
                 />
               </Sphere>
             </Suspense>
