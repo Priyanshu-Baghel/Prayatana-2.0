@@ -5,31 +5,6 @@ import SahayataLogo from '../../Assets/Logo/Sahayata.png';
 import Logo from '../../Assets/Logo/Logo.svg';
 import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../../store/auth';
-import styled from 'styled-components';
-
-const Img = styled.img`
-  width: 450px;
-  height: 450px;
-  object-fit: contain;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  // animation: animate 2s infinite ease alternate;
-
-  @media only screen and (max-width: 768px) {
-    width: 300px;
-    height: 300px;
-  }
-
-  @keyframes animate {
-    to {
-      transform: translateY(20px);
-    }
-  }
-`;
 
 const Hero = () => {
   const { isLoggedIn, user } = useAuth();
@@ -37,95 +12,68 @@ const Hero = () => {
 
   return (
     <div className="relative w-full bg-white">
-      <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
-        <div className="flex flex-col justify-center px-4 py-12 md:py-16 lg:col-span-7 lg:gap-x-6 lg:px-6 lg:py-24 xl:col-span-6">
+      <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 px-4 py-12 md:py-16 lg:px-8 lg:py-24">
+        {/* Left Section */}
+        <div className="flex flex-col justify-center lg:col-span-7 xl:col-span-6">
           <span>
-            <img src={Logo} width="50" height="30" alt='' />
+            <img src={Logo} width="50" height="30" alt="Sahayata Logo" />
           </span>
-          <div className="mt-8 flex max-w-max items-center space-x-2 rounded-full bg-gray-100 p-1">
-            <div className="rounded-full bg-white p-1 px-2">
+
+          <div className="mt-8 flex flex-wrap items-center gap-2 rounded-full bg-gray-100 p-2">
+            <div className="rounded-full bg-white px-3 py-1">
               <p className="text-sm font-medium">Empowering Assistance</p>
             </div>
             <p className="text-sm font-medium">Join our mission &rarr;</p>
           </div>
-          <h1 className="mt-8 text-m font-bold tracking-tight text-black md:text-4xl lg:text-6xl">
+
+          <h1 className="mt-6 text-3xl md:text-4xl lg:text-6xl font-bold text-black">
             Sahayata-Setu: <br />
             Bridging Assistance, Connecting Lives.
           </h1>
-          <p className="mt-8 text-lg text-gray-700">
+
+          <p className="mt-6 text-base md:text-lg text-gray-700 max-w-prose">
             A unified platform to streamline public service complaints and ensure effective routing for quick resolutions.
           </p>
-          <form action="" className="mt-8 flex items-start space-x-2">
+
+          <div className="mt-6 flex flex-wrap gap-3">
             {isLoggedIn ? (
               <>
-                {user.role === "admin" ? (
-                  <>
-                    <div className="hidden lg:block">
-                      <NavLink to="/admin">
-                        <button
-                          type="button"
-                          className="rounded-md lg:ml-3 bg-primary px-8 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                        >
-                          Dashboard
-                        </button>
-                      </NavLink>
-                    </div>
-                    <div className="hidden lg:block">
-                      <NavLink to="/profile">
-                        <button
-                          type="button"
-                          className="rounded-md lg:ml-3 bg-primary px-8 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                        >
-                          Profile
-                        </button>
-                      </NavLink>
-                    </div>
-                  </>
-                ) : (
-                  <div className="hidden lg:block">
-                    <NavLink to="/profile">
-                      <button
-                        type="button"
-                        className="rounded-md lg:ml-3 bg-primary px-8 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                      >
-                        Profile
-                      </button>
-                    </NavLink>
-                  </div>
+                {user.role === "admin" && (
+                  <NavLink to="/admin">
+                    <button className="rounded-md bg-primary px-6 py-2 text-sm font-semibold text-white shadow hover:bg-primary/80">
+                      Dashboard
+                    </button>
+                  </NavLink>
                 )}
+                <NavLink to="/profile">
+                  <button className="rounded-md bg-primary px-6 py-2 text-sm font-semibold text-white shadow hover:bg-primary/80">
+                    Profile
+                  </button>
+                </NavLink>
               </>
             ) : (
               <>
-                <div>
-                  <Link to="/signin">
-                    <button
-                      type="button"
-                      className="rounded-md bg-primary px-10 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                    >
-                      Sign In
-                    </button>
-                  </Link>
-                </div>
-
-                <div>
-                  <Link to='/signup'>
-                    <button
-                      type="button"
-                      className="rounded-md border border-black px-8 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                    >
-                      Sign Up
-                    </button>
-                  </Link>
-                </div>
+                <Link to="/signin">
+                  <button className="rounded-md bg-primary px-6 py-2 text-sm font-semibold text-white shadow hover:bg-black/80">
+                    Sign In
+                  </button>
+                </Link>
+                <Link to="/signup">
+                  <button className="rounded-md border border-black px-6 py-2 text-sm font-semibold text-black shadow">
+                    Sign Up
+                  </button>
+                </Link>
               </>
             )}
-          </form>
+          </div>
         </div>
-        <div className="relative lg:col-span-5 lg:-mr-8 xl:col-span-6">
-          <Canvas>
+
+        {/* Right Section */}
+        <div className="relative w-full h-[300px] sm:h-[400px] lg:h-full lg:col-span-5 xl:col-span-6">
+          <Canvas className="w-full h-full">
             <Suspense fallback={null}>
               <OrbitControls enableZoom={false} />
-              <ambientLight intensity={7} />
+              <ambientLight intensity={0.8} />
               <directionalLight position={[3, 2, 1]} />
               <Sphere args={[1, 100, 200]} scale={2.1}>
                 <MeshDistortMaterial
@@ -137,7 +85,12 @@ const Hero = () => {
               </Sphere>
             </Suspense>
           </Canvas>
-          <Img src={SahayataLogo} />
+
+          <img
+            src={SahayataLogo}
+            alt="3D Sphere"
+            className="absolute top-0 bottom-0 left-0 right-0 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] object-contain m-auto"
+          />
         </div>
       </div>
     </div>
