@@ -48,13 +48,12 @@ const Navbar = () => {
   
   
     return (
-    <>
-        
+      <>
         <div className="relative w-full bg-white">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
             <div className="inline-flex items-center space-x-2">
               <span>
-                <img src={Logo} width="50" height="30" alt=''/>
+                <img src={Logo} width="50" height="30" alt="Logo" />
               </span>
               <span className="font-bold text-primary">Sahayata-Setu</span>
             </div>
@@ -72,34 +71,32 @@ const Navbar = () => {
                 ))}
               </ul>
             </div>
-            { isLoggedIn 
-               ?
-               <>
+            {isLoggedIn ? (
+              <>
                 <div className="hidden lg:block">
-              <NavLink
-                to="/">
-                <button
-                    type="button"
-                    onClick={handleLogout}
-                    className="rounded-md bg-primary px-8 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                  >
-                    Logout
-                </button>
-              </NavLink>
-            </div> 
-            </>
-            : <div className="hidden lg:block">
-              <NavLink
-                to="/signin">
-                <button
+                  <NavLink to="/">
+                    <button
+                      type="button"
+                      onClick={handleLogout}
+                      className="rounded-md bg-primary px-8 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                    >
+                      Logout
+                    </button>
+                  </NavLink>
+                </div>
+              </>
+            ) : (
+              <div className="hidden lg:block">
+                <NavLink to="/signin">
+                  <button
                     type="button"
                     className="rounded-md bg-black px-8 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                   >
                     Sign In
-                </button>
-              </NavLink>
-            </div>
-          }
+                  </button>
+                </NavLink>
+              </div>
+            )}
 
             <div className="lg:hidden">
               <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
@@ -111,9 +108,11 @@ const Navbar = () => {
                     <div className="flex items-center justify-between">
                       <div className="inline-flex items-center space-x-2">
                         <span>
-                            <img src={Logo} width="30" height="30"  alt=''/>
+                          <img src={Logo} width="30" height="30" alt="Logo" />
                         </span>
-                        <span className="font-bold text-primary">Bhasha.ai</span>
+                        <span className="font-bold text-primary">
+                          Sahayata-Setu
+                        </span>
                       </div>
                       <div className="-mr-2">
                         <button
@@ -128,48 +127,49 @@ const Navbar = () => {
                     </div>
                     <div className="mt-6">
                       <nav className="grid gap-y-4">
+                        
                         {menuItems.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold"
-                          >
-                            <span className="ml-3 text-base font-medium text-gray-900 hover:text-primary">
-                              {item.name}
-                            </span>
-                          </a>
+                          <ul key={item.name}>
+                            <NavLink
+                              to={item.href}
+                              className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold"
+                            >
+                              <span className="ml-3 text-base font-medium text-gray-900 hover:text-primary">
+                                {item.name}
+                              </span>
+                            </NavLink>
+                          </ul>
                         ))}
                       </nav>
                     </div>
-              { isLoggedIn 
-               ? 
-              <NavLink
-                to="/">
-                <button
-                    type="button"
-                    onClick={handleLogout}
-                    className="mt-4 w-full rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                    >
-                            Logout
+                    {isLoggedIn ? (
+                      <NavLink to="/">
+                        <button
+                          type="button"
+                          onClick={handleLogout}
+                          className="mt-4 w-full rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                        >
+                          Logout
                         </button>
                       </NavLink>
-                    :<NavLink to="/signin">
-                    <button
-                      type="button"
-                      className="mt-4 w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                    >
-                      Sign In
-                    </button>
-                    </NavLink> 
-                  }
+                    ) : (
+                      <NavLink to="/signin">
+                        <button
+                          type="button"
+                          className="mt-4 w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                        >
+                          Sign In
+                        </button>
+                      </NavLink>
+                    )}
                   </div>
                 </div>
               </div>
             )}
           </div>
         </div>
-    </>
-      )
+      </>
+    );
     }
 
 
